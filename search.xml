@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习（二） -python基本语法]]></title>
+    <url>%2F2019%2F09%2F13%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89-python%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[机器学习（二）-python基本语法一、变量（1）创建：a=2&emsp;等号左边就是变量名称，右边是值；不用声明；自动指定类型；每行不需要分号结尾&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;a_1、a_2：通用做法是使用下划线区分相似变量（2）类型转换：str(值)&emsp;&emsp;将值转为字符&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;int(值)&emsp;&emsp;将值转为int&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;float(值)&emsp;&emsp;将值转为float 二、打印（1）print(值)（2）print(type(变量))：打印变量的类型 三、运算符（1）+、-、*、/ 四、集合List（1）声明：变量名=[]&emsp;&emsp;中括号就是声明（2）填充元素：变量名.append(值)]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习（一） -配置]]></title>
+    <url>%2F2019%2F09%2F13%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89-%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[机器学习（一）-配置&emsp;&emsp;听到老师讲到几个资源站点先记下：Github，kaggle等等资源分享站点。当然，圈子最重要！！！一、环境配置：（1）老师介绍的ANACONDA，包含了所有要安装的包;（2）我安装的vs2019，目的是为了后面开发程序更加方便，但是需要自己安装包；二、包安装（1）我的包路径在：C:\Users\hh\AppData\Roaming\Python\Python37\site-packages（2）首先需要更新python扩展库：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64文件夹，运行：python -m pip install –upgrade pip（3）安装numpy：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts，运行pip install –user numpy（4）安装pandas：pip install –user pandas]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[机器学习开篇]]></title>
     <url>%2F2019%2F09%2F12%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BC%80%E7%AF%87%2F</url>
-    <content type="text"><![CDATA[机器学习开篇 2019年9月12日 周四 &emsp;&emsp;计划从今天开始正式学习机器学习，前面已经听完了考研数学的微积分以及概率论与数理统计部分，线性代数后续继续学习，虽然没有做题，但知识点已熟悉过一遍，后续学习机器学习遇到具体算法再进行查阅推导，问题应该不大，就把后面推导机器学习算法的过程当作是做题练习吧。 &emsp;&emsp;在网上下了基本机器学习、人工智能的书籍，但里面的内容太干，自己看实在难以下咽，于是希望能找一些视频对应这学。找了微软的AI培训（现已开始收费）、谷歌的AI培训、英伟达的AI培训（需购买开发版）都不太适合，有找到了coursera上面顶级深度学习课程，但全英文，无中文字幕，实在无可奈何。最后只能求助于网易公开课，在上面找到了唐宇迪主讲的《Python机器学习实战》，初步试听后感觉甚好，平易近人，内容总共130余讲，基本覆盖机器学习的主要算法及Python应用，足以作为基础学习之用，于是下定决心开始学习。 &emsp;&emsp;多年学习知识的经验告诉我，学而不练不如不学，会一点和一点都不会是一样的。于是开始每天记录学习过程，整理知识，不断强化练习，记录失败和成功。]]></content>
+    <content type="text"><![CDATA[机器学习开篇 2019年9月12日 周四&emsp;&emsp;计划从今天开始正式学习机器学习，前面已经听完了考研数学的微积分以及概率论与数理统计部分，线性代数后续继续学习，虽然没有做题，但知识点已熟悉过一遍，后续学习机器学习遇到具体算法再进行查阅推导，问题应该不大，就把后面推导机器学习算法的过程当作是做题练习吧。 &emsp;&emsp;在网上下了基本机器学习、人工智能的书籍，但里面的内容太干，自己看实在难以下咽，于是希望能找一些视频对应这学。找了微软的AI培训（现已开始收费）、谷歌的AI培训、英伟达的AI培训（需购买开发版）都不太适合，有找到了coursera上面顶级深度学习课程，但全英文，无中文字幕，无可奈何，最后只能求助于网易公开课，在上面找到了唐宇迪主讲的《Python机器学习实战》，初步试听后感觉甚好，平易近人，内容总共130余讲，基本覆盖机器学习的主要算法及Python应用，足以作为基础学习之用，于是下定决心开始学习。 &emsp;&emsp;多年学习知识的经验告诉我，学而不练不如不学，会一点和一点都不会是一样的。于是开始每天记录学习过程，整理知识，不断强化练习，记录失败和成功。]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
