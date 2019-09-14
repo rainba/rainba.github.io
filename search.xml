@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[机器学习（一） -配置]]></title>
     <url>%2F2019%2F09%2F13%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89-%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[机器学习（一）-配置&emsp;&emsp;听到老师讲到几个资源站点先记下：Github，kaggle等等资源分享站点。当然，圈子最重要！！！一、环境配置：（1）老师介绍的ANACONDA，包含了所有要安装的包;（2）我安装的vs2019，目的是为了后面开发程序更加方便，但是需要自己安装包；二、包安装（1）我的包路径在：C:\Users\hh\AppData\Roaming\Python\Python37\site-packages（2）首先需要更新python扩展库：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64文件夹，运行：python -m pip install –upgrade pip（3）安装numpy：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts，运行pip install –user numpy（4）安装pandas：pip install –user pandas]]></content>
+    <content type="text"><![CDATA[机器学习（一）-配置&emsp;&emsp;听到老师讲到几个资源站点先记下：Github，kaggle等等资源分享站点。当然，圈子最重要！！！一、环境配置：（1）老师介绍的ANACONDA，包含了所有要安装的包;（2）我安装的vs2019，目的是为了后面开发程序更加方便，但是需要自己安装包；二、包安装（1）我的包路径在：C:\Users\hh\AppData\Roaming\Python\Python37\site-packages（2）首先需要更新python扩展库：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64文件夹，运行：python -m pip install –upgrade pip（3）安装numpy：cmd，进入C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts，运行pip install numpy（4）安装pandas：pip install pandas （5）以下是从网上摘取的量化库大全（来源已不清楚，原作者见谅，纯个人学习用），亲测部分可直接安装]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
