@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <meta name="description" content="一、格式规范（一）标识符1.标识符由字母、数字、下划线组成，不能以数字开头，区分大小写；2.以下划线开头的标识符有特殊意义：&amp;nbsp;&amp;nbsp;（1）以下划线开头的_foo代表不能直接访问的类属性，须通过类提供的接口进行访问，不能用from xxx import *导入；&amp;nbsp;&amp;nbsp;（2）以双下划线__foo代表私有成员；&amp;nbsp;&amp;nbsp;（3）以双下划线开头和结尾的__f">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基本语法">
+<meta property="og:url" content="http://yoursite.com/2019/09/13/语言/python基本语法/index.html">
+<meta property="og:site_name" content="Rainba">
+<meta property="og:description" content="一、格式规范（一）标识符1.标识符由字母、数字、下划线组成，不能以数字开头，区分大小写；2.以下划线开头的标识符有特殊意义：&amp;nbsp;&amp;nbsp;（1）以下划线开头的_foo代表不能直接访问的类属性，须通过类提供的接口进行访问，不能用from xxx import *导入；&amp;nbsp;&amp;nbsp;（2）以双下划线__foo代表私有成员；&amp;nbsp;&amp;nbsp;（3）以双下划线开头和结尾的__f">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-25T14:15:05.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基本语法">
+<meta name="twitter:description" content="一、格式规范（一）标识符1.标识符由字母、数字、下划线组成，不能以数字开头，区分大小写；2.以下划线开头的标识符有特殊意义：&amp;nbsp;&amp;nbsp;（1）以下划线开头的_foo代表不能直接访问的类属性，须通过类提供的接口进行访问，不能用from xxx import *导入；&amp;nbsp;&amp;nbsp;（2）以双下划线__foo代表私有成员；&amp;nbsp;&amp;nbsp;（3）以双下划线开头和结尾的__f">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/13/语言/python基本语法/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python基本语法 | Rainba</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rainba</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Rainba Perspective</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/语言/python基本语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content="Moisturizing things in a fine silence">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python基本语法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+              
+
+              
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-25 22:15:05" itemprop="dateModified" datetime="2019-09-25T22:15:05+08:00">2019-09-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h1 id="一、格式规范"><a href="#一、格式规范" class="headerlink" title="一、格式规范"></a>一、格式规范</h1><h2 id="（一）标识符"><a href="#（一）标识符" class="headerlink" title="（一）标识符"></a>（一）标识符</h2><p>1.标识符由字母、数字、下划线组成，不能以数字开头，区分大小写；<br>2.以下划线开头的标识符有特殊意义：<br>&nbsp;&nbsp;（1）以下划线开头的_foo代表不能直接访问的类属性，须通过类提供的接口进行访问，不能用from xxx import *导入；<br>&nbsp;&nbsp;（2）以双下划线__foo代表私有成员；<br>&nbsp;&nbsp;（3）以双下划线开头和结尾的__foo代表特殊方法专用的标识，如__init__()代表类的构造函数。</p>
+<h2 id="（二）保留字符"><a href="#（二）保留字符" class="headerlink" title="（二）保留字符"></a>（二）保留字符</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">and</th>
+<th style="text-align:center">exec</th>
+<th style="text-align:center">not</th>
+<th style="text-align:center">assert</th>
+<th style="text-align:center">finally</th>
+<th style="text-align:center">or</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">break</td>
+<td style="text-align:center">for</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">class</td>
+<td style="text-align:center">from</td>
+<td style="text-align:center">print</td>
+</tr>
+<tr>
+<td style="text-align:center">continue</td>
+<td style="text-align:center">global</td>
+<td style="text-align:center">raise</td>
+<td style="text-align:center">def</td>
+<td style="text-align:center">if</td>
+<td style="text-align:center">retrun</td>
+</tr>
+<tr>
+<td style="text-align:center">elif</td>
+<td style="text-align:center">in</td>
+<td style="text-align:center">while</td>
+<td style="text-align:center">else</td>
+<td style="text-align:center">is</td>
+<td style="text-align:center">with</td>
+</tr>
+<tr>
+<td style="text-align:center">except</td>
+<td style="text-align:center">lambda</td>
+<td style="text-align:center">yield</td>
+<td style="text-align:center">del</td>
+<td style="text-align:center">import</td>
+<td style="text-align:center">try</td>
+</tr>
+</tbody>
+</table>
+<h2 id="（三）行和缩进"><a href="#（三）行和缩进" class="headerlink" title="（三）行和缩进"></a>（三）行和缩进</h2><p>1.每个缩进层次使用1个tab或者2个空格或者4个空格。</p>
+<h2 id="（四）多行语句"><a href="#（四）多行语句" class="headerlink" title="（四）多行语句"></a>（四）多行语句</h2><p>1.通常情况python以回车作为行的结束符<br>2.同一行显示多条语句，使用分号；分开。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;a&apos;);print(&apos;b&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>3.将一行分拆为多行，未结束的行后面加上\，下一行的缩进保持与上一行一致即可。如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total=<span class="string">'abcdefghijklm\</span></span><br><span class="line"><span class="string">nopqrstuvwxyz'</span></span><br><span class="line">print(total)</span><br></pre></td></tr></table></figure></p>
+<p>但，如果是将()，[]，{}中的内容分行放，就不需要使用\符号。如<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">total=[<span class="string">'abcdefghijklm\      #将同一个字符分行必须要用\</span></span><br><span class="line"><span class="string">nopqrstuvwxyz'</span>,<span class="string">'abc'</span>,       <span class="comment">#将()，[]，&#123;&#125;中内容分行，不需使用\</span></span><br><span class="line"><span class="string">'bcd'</span>]</span><br><span class="line">print(total)</span><br></pre></td></tr></table></figure></p>
+<h2 id="（五）引号"><a href="#（五）引号" class="headerlink" title="（五）引号"></a>（五）引号</h2><p>1.引号( ‘ )、双引号( “ )、三引号( ‘’’ 或 “”” ) 都可以表示字符串，开始与结束必须的相同类型引号；<br>2.三引号( ‘’’ 或 “”” ) 可以由多行组成，编写多行文本，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paragraph=<span class="string">"""这个段落</span></span><br><span class="line"><span class="string">包含多个语句"""</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（六）注释"><a href="#（六）注释" class="headerlink" title="（六）注释"></a>（六）注释</h2><p>1.单行注释。使用#开头。<br>2.多行注释。使用三个单引号(‘’’)或三个双引号(“””)。</p>
+<h2 id="（七）空行"><a href="#（七）空行" class="headerlink" title="（七）空行"></a>（七）空行</h2><p>1.空行有利于代码的阅读理解。<br>（八）等待用户输入<br>1.下面代码等待用户输入，回车键退出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input(<span class="string">"等待输入..."</span>)         <span class="comment">#按下enter时退出，按其他键会显示出来</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（八）print-输出"><a href="#（八）print-输出" class="headerlink" title="（八）print 输出"></a>（八）print 输出</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'要输出的内容'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="二、变量"><a href="#二、变量" class="headerlink" title="二、变量"></a>二、变量</h1><h2 id="（一）变量赋值"><a href="#（一）变量赋值" class="headerlink" title="（一）变量赋值"></a>（一）变量赋值</h2><p>1.变量赋值：=<br>2.多个变量赋值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=b=c=<span class="number">1</span></span><br><span class="line">a,b,c=<span class="number">1</span>,<span class="number">2</span>,<span class="string">"abc"</span></span><br></pre></td></tr></table></figure></p>
+<p>3.删除变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del 变量名</span><br></pre></td></tr></table></figure></p>
+<h2 id="（二）数字"><a href="#（二）数字" class="headerlink" title="（二）数字"></a>（二）数字</h2><p>1.in：可以有正负号的整数；<br>2.float：带小数点<br>3.complex复数：使用34+56j或者complex(34,56)表示<br>4.math模块：提供许多对浮点数的数学运算函数，<strong>使用dir(math)查看包中内容</strong><br>5.cmath模块：提供用于复数运算的函数<br>6.常用函数<br>|函数|描述|举例|<br>|—-|—-|—-|<br>|abs(x)|绝对值|abs(-11)返回11|<br>|math.ceil(x)|向上取整|math.ceil(4.1) 返回 5|<br>|cmp(x, y)|比较大小|x &lt; y 返回 -1,  x == y 返回 0,  x &gt; y 返回 1|<br>exp(x)    返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045<br>fabs(x)    返回数字的绝对值，如math.fabs(-10) 返回10.0<br>floor(x)    返回数字的下舍整数，如math.floor(4.9)返回 4<br>log(x)    如math.log(math.e)返回1.0,math.log(100,10)返回2.0<br>log10(x)    返回以10为基数的x的对数，如math.log10(100)返回 2.0<br>max(x1, x2,…)    返回给定参数的最大值，参数可以为序列。<br>min(x1, x2,…)    返回给定参数的最小值，参数可以为序列。<br>modf(x)    返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。<br>pow(x, y)    x**y 运算后的值。<br>round(x [,n])    返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数。<br>sqrt(x)    返回数字x的平方根</p>
+<p>函数    描述<br>choice(seq)    从序列的元素中随机挑选一个元素，比如random.choice(range(10))，从0到9中随机挑选一个整数。<br>randrange ([start,] stop [,step])    从指定范围内，按指定基数递增的集合中获取一个随机数，基数默认值为 1<br>random()    随机生成下一个实数，它在[0,1)范围内。<br>seed([x])    改变随机数生成器的种子seed。如果你不了解其原理，你不必特别去设定seed，Python会帮你选择seed。<br>shuffle(lst)    将序列的所有元素随机排序<br>uniform(x, y)    随机生成下一个实数，它在[x,y]范围内。</p>
+<p>函数    描述<br>acos(x)    返回x的反余弦弧度值。<br>asin(x)    返回x的反正弦弧度值。<br>atan(x)    返回x的反正切弧度值。<br>atan2(y, x)    返回给定的 X 及 Y 坐标值的反正切值。<br>cos(x)    返回x的弧度的余弦值。<br>hypot(x, y)    返回欧几里德范数 sqrt(x<em>x + y</em>y)。<br>sin(x)    返回的x弧度的正弦值。<br>tan(x)    返回x弧度的正切值。<br>degrees(x)    将弧度转换为角度,如degrees(math.pi/2) ， 返回90.0<br>radians(x)    将角度转换为弧度</p>
+<p>常量    描述<br>pi    数学常量 pi（圆周率，一般以π来表示）<br>e    数学常量 e，e即自然常数（自然常数）。</p>
+<h2 id="（三）字符串"><a href="#（三）字符串" class="headerlink" title="（三）字符串"></a>（三）字符串</h2><p>1.索引从左至右默认从0开始，从右至左默认从-1开始；<br>2.字符串截取：使用[头下标:尾下标]，下标为空表示一直到一端，取头不取尾；<br>&nbsp;&nbsp;字符串截取：[头下标:尾下标:步长]，跳过中间字符；<br>3.字符串连接：+<br>4.字符串重复：*次数<br>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">'abcdefghijklmn'</span></span><br><span class="line">b=a[<span class="number">4</span>:<span class="number">6</span>]*<span class="number">2</span>+a[<span class="number">9</span>:<span class="number">10</span>]</span><br><span class="line">c=a[<span class="number">1</span>:<span class="number">8</span>:<span class="number">2</span>]</span><br><span class="line">print(b)      <span class="comment">#结果efefj</span></span><br><span class="line">print(c)      <span class="comment">#结果bdfh</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（四）列表（List）"><a href="#（四）列表（List）" class="headerlink" title="（四）列表（List）"></a>（四）列表（List）</h2><p>1.使用中括号表示[元素1,元素2]<br>2.列表元素从左至右默认从0开始，从右至左默认从-1开始；<br>3.列表元素截取：使用[头下标:尾下标]，下标为空表示一直到一端，取头不取尾；<br>&nbsp;&nbsp;字符串截取：[头下标:尾下标:步长]，跳过中间字符；<br>4.字符串连接：+；<br>5.字符串重复：*次数；<br>6.更新元组直接对其赋值即可；<br>7.删除元素：<br>&nbsp;&nbsp;del 列表名[下标]        #删除指定下标的元素<br>&nbsp;&nbsp;列表名.remove(元素值)     #删除指定值的元素<br>&nbsp;&nbsp;列表名.pop(下标)     #弹出指定下标的元素<br>&nbsp;&nbsp;列表名.clear()     #清空元素<br>8.增加元素：列表名.append(元素值)      #默认<br>9.列表的长度：len(list)<br>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="number">1</span>,<span class="number">2</span>,[<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>],<span class="number">99.9</span>]     <span class="comment">#列表中可以是任意类型，可以嵌套列表</span></span><br><span class="line">print(list)           <span class="comment">#结果['a', 'b', 'c', 1, 2, ['d', 'e', 'f'], 99.9]</span></span><br><span class="line">print(list[<span class="number">2</span>]*<span class="number">3</span>)      <span class="comment">#结果ccc</span></span><br><span class="line">print(list[<span class="number">2</span>:<span class="number">4</span>]*<span class="number">2</span>)    <span class="comment">#结果['c', 1, 'c', 1]</span></span><br><span class="line">print(list[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>])    <span class="comment">#结果['b', 1]</span></span><br><span class="line"></span><br><span class="line">list[<span class="number">6</span>]=<span class="number">7</span>;<span class="keyword">print</span>[<span class="number">6</span>];   <span class="comment">#结果[7]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（五）元组（tuple）"><a href="#（五）元组（tuple）" class="headerlink" title="（五）元组（tuple）"></a>（五）元组（tuple）</h2><p>1.使用小括号(元素1,元素2)；<br>2.不能二次赋值，相当于只读列表；<br>3.元组元素从左至右默认从0开始，从右至左默认从-1开始；<br>3.元组元素截取：使用[头下标:尾下标]，下标为空表示一直到一端，取头不取尾；<br>&nbsp;&nbsp;字符串截取：[头下标:尾下标:步长]，跳过中间字符；<br>4.字符串连接：+；<br>5.字符串重复：*次数；</p>
+<h2 id="（六）字典-dictionary"><a href="#（六）字典-dictionary" class="headerlink" title="（六）字典(dictionary)"></a>（六）字典(dictionary)</h2><p>1.使用大括号{key1:value1,key2:value2,key3:value3}</p>
+<h2 id="（七）类型转换"><a href="#（七）类型转换" class="headerlink" title="（七）类型转换"></a>（七）类型转换</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">int(x [,base])</td>
+<td style="text-align:left">将x转换为一个整数</td>
+</tr>
+<tr>
+<td style="text-align:left">long(x [,base] )</td>
+<td style="text-align:left">将x转换为一个长整数</td>
+</tr>
+<tr>
+<td style="text-align:left">float(x)</td>
+<td style="text-align:left">将x转换到一个浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">complex(real [,imag])</td>
+<td style="text-align:left">创建一个复数</td>
+</tr>
+<tr>
+<td style="text-align:left">str(x)</td>
+<td style="text-align:left">将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">repr(x)</td>
+<td style="text-align:left">将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">eval(str)</td>
+<td style="text-align:left">用来计算在字符串中的有效Python表达式,并返回一个对象</td>
+</tr>
+<tr>
+<td style="text-align:left">tuple(s)</td>
+<td style="text-align:left">将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td style="text-align:left">list(s)</td>
+<td style="text-align:left">将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td style="text-align:left">set(s)</td>
+<td style="text-align:left">转换为可变集合</td>
+</tr>
+<tr>
+<td style="text-align:left">dict(d)</td>
+<td style="text-align:left">创建一个字典。d 必须是一个序列 (key,value)元组。</td>
+</tr>
+<tr>
+<td style="text-align:left">frozenset(s)</td>
+<td style="text-align:left">转换为不可变集合</td>
+</tr>
+<tr>
+<td style="text-align:left">chr(x)</td>
+<td style="text-align:left">将一个整数转换为一个字符</td>
+</tr>
+<tr>
+<td style="text-align:left">unichr(x)</td>
+<td style="text-align:left">将一个整数转换为Unicode字符</td>
+</tr>
+<tr>
+<td style="text-align:left">ord(x)</td>
+<td style="text-align:left">将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">hex(x)</td>
+<td style="text-align:left">将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">oct(x)</td>
+<td style="text-align:left">将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody>
+</table>
+<h1 id="三、运算符"><a href="#三、运算符" class="headerlink" title="三、运算符"></a>三、运算符</h1><h2 id="（一）算术运算"><a href="#（一）算术运算" class="headerlink" title="（一）算术运算"></a>（一）算术运算</h2><p>加：+        减：-       乘：<em>        除：/         取除法的余数：%         幂：\</em>*        取整数：//</p>
+<h2 id="（二）比较运算"><a href="#（二）比较运算" class="headerlink" title="（二）比较运算"></a>（二）比较运算</h2><p>等于：==     不等于：！=或&lt;&gt;        大于：&gt;        小于：&lt;           大于等于：&gt;=         小于等于：&lt;=</p>
+<h2 id="（三）赋值运算"><a href="#（三）赋值运算" class="headerlink" title="（三）赋值运算"></a>（三）赋值运算</h2><p>先运算前面一个运算符，再进行赋值操作</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>简单的赋值运算符</td>
+<td>c = a + b， 将 a + b 的运算结果赋值为 c</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>加法赋值运算符</td>
+<td>c += a，等效于 c = c + a</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减法赋值运算符</td>
+<td>c -= a，等效于 c = c - a</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘法赋值运算符</td>
+<td>c <em>= a，等效于 c = c </em> a</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除法赋值运算符</td>
+<td>c /= a，等效于 c = c / a</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>取模赋值运算符</td>
+<td>c %= a，等效于 c = c % a</td>
+</tr>
+<tr>
+<td>**=</td>
+<td>幂赋值运算符</td>
+<td>c**= a，等效于 c = c** a</td>
+</tr>
+<tr>
+<td>//=</td>
+<td>取整除赋值运算符</td>
+<td>c //= a，等效于 c = c // a</td>
+</tr>
+</tbody>
+</table>
+<h2 id="（四）位运算"><a href="#（四）位运算" class="headerlink" title="（四）位运算"></a>（四）位运算</h2><p>把数字看做二进制来进行计算。<br>按位与：a&amp;b     按位或：a|b   按位异：a^b    按位取反：~a   左移动3位：a&lt;<3 右移动4位：a>&gt;4（移动时高位丢弃，低位补0）</3></p>
+<h2 id="（五）逻辑运算"><a href="#（五）逻辑运算" class="headerlink" title="（五）逻辑运算"></a>（五）逻辑运算</h2><p>X and Y：如果X=0，则返回Y的值，否则返回X的值<br>X or Y：如果X=0，则返回Y的值，否则返回X的值<br>not X： x 为 True，返回 False 。如果 x 为 False，它返回 True</p>
+<h2 id="（六）成员运算"><a href="#（六）成员运算" class="headerlink" title="（六）成员运算"></a>（六）成员运算</h2><p>用于在字符串、列表、元组中查找元素。<br>in：找到值返回 True，否则返回 False<br>not in：没有找到值返回 True，否则返回 False</p>
+<h2 id="（七）身份运算"><a href="#（七）身份运算" class="headerlink" title="（七）身份运算"></a>（七）身份运算</h2><p>比较<strong>存储单元</strong><br>x is y： 类似 id(x) == id(y) , 如果引用的是同一个对象则返回 True，否则返回 False<br>is not：类似 id(a) != id(b)。如果引用的不是同一个对象则返回结果 True，否则返回 False</p>
+<h2 id="（八）运算符优先级"><a href="#（八）运算符优先级" class="headerlink" title="（八）运算符优先级"></a>（八）运算符优先级</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>**</td>
+<td>指数 (最高优先级)</td>
+</tr>
+<tr>
+<td>~ + -</td>
+<td>按位翻转, 一元加号和减号 (最后两个的方法名为 +@ 和 -@)</td>
+</tr>
+<tr>
+<td>* / % //</td>
+<td>乘，除，取模和取整除</td>
+</tr>
+<tr>
+<td>+ -</td>
+<td>加法减法</td>
+</tr>
+<tr>
+<td>&gt;&gt; &lt;&lt;</td>
+<td>右移，左移运算符</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>位 ‘AND’</td>
+</tr>
+<tr>
+<td>^ \</td>
+<td></td>
+<td>位运算符</td>
+</tr>
+<tr>
+<td>&lt;= &lt; &gt; &gt;=</td>
+<td>比较运算符</td>
+</tr>
+<tr>
+<td>\&lt;> == !=</td>
+<td>等于运算符</td>
+</tr>
+<tr>
+<td>=  %=  /=  //=  -=  +=   *=   **=</td>
+<td>赋值运算符</td>
+</tr>
+<tr>
+<td>is   is not</td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td>in not in</td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td>not and or</td>
+<td>逻辑运算符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、流程控制语句"><a href="#四、流程控制语句" class="headerlink" title="四、流程控制语句"></a>四、流程控制语句</h1><h2 id="（一）条件语句"><a href="#（一）条件语句" class="headerlink" title="（一）条件语句"></a>（一）条件语句</h2><p>1.单行语句：`if(条件): 执行语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件:</span><br><span class="line">	执行语句<span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	执行语句<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="（二）while循环"><a href="#（二）while循环" class="headerlink" title="（二）while循环"></a>（二）while循环</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件:     <span class="comment">#为true时无限循环</span></span><br><span class="line">	执行语句</span><br></pre></td></tr></table></figure>
+<p>当循环条件为false时执行else中的语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件:</span><br><span class="line">	执行语句<span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	执行语句<span class="number">2</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（三）for循环"><a href="#（三）for循环" class="headerlink" title="（三）for循环"></a>（三）for循环</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 条件:</span><br><span class="line">	执行语句</span><br></pre></td></tr></table></figure>
+<p>遍历列表或元组等序列：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(列表/元组等)):</span><br><span class="line">	print(列表[i])</span><br></pre></td></tr></table></figure></p>
+<p>循环为false时执行else中的语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 条件:</span><br><span class="line">	执行语句<span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	执行语句<span class="number">2</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="（四）break语句"><a href="#（四）break语句" class="headerlink" title="（四）break语句"></a>（四）break语句</h2><p>1.用于终止循环语句<br>2.在嵌套循环中使用时，break语句将停止执行最深层的循环，并开始执行下一行代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:     <span class="comment">#结果为pyt</span></span><br><span class="line">   <span class="keyword">if</span> letter == <span class="string">'h'</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h2 id="（五）continue语句"><a href="#（五）continue语句" class="headerlink" title="（五）continue语句"></a>（五）continue语句</h2><p>用于跳出本次循环，进行下一轮循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:      <span class="comment">#结果为pyton</span></span><br><span class="line">   <span class="keyword">if</span> letter == <span class="string">'h'</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+<h2 id="（六）pass语句"><a href="#（六）pass语句" class="headerlink" title="（六）pass语句"></a>（六）pass语句</h2><p>pass 不做任何事情，一般用做占位语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:     <span class="comment">#pass不做任何事情</span></span><br><span class="line">   <span class="keyword">if</span> letter == <span class="string">'h'</span>:</span><br><span class="line">      <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>五、函数模块<br>六、内置函数<br>七、文件处理<br>八、异常处理<br>九、面向对象<br>十、正则表达式<br>十一、CGI编程<br>十二、数据库<br>十三、网络编程<br>十四、SMTP<br>十四、多线程编程<br>十五、XML解析<br>十六、GUI<br>十七、JSON<br>一、python标识符</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/rainba-qcode.jpg" alt=" wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe to my blog by scanning my public wechat account</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/12/机器学习/机器学习开篇/" rel="next" title="机器学习开篇">
+                <i class="fa fa-chevron-left"></i> 机器学习开篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/13/机器学习/机器学习（一）-配置/" rel="prev" title="机器学习（一） -配置">
+                机器学习（一） -配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description">Moisturizing things in a fine silence</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、格式规范"><span class="nav-number">1.</span> <span class="nav-text">一、格式规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）标识符"><span class="nav-number">1.1.</span> <span class="nav-text">（一）标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）保留字符"><span class="nav-number">1.2.</span> <span class="nav-text">（二）保留字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）行和缩进"><span class="nav-number">1.3.</span> <span class="nav-text">（三）行和缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）多行语句"><span class="nav-number">1.4.</span> <span class="nav-text">（四）多行语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）引号"><span class="nav-number">1.5.</span> <span class="nav-text">（五）引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）注释"><span class="nav-number">1.6.</span> <span class="nav-text">（六）注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（七）空行"><span class="nav-number">1.7.</span> <span class="nav-text">（七）空行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（八）print-输出"><span class="nav-number">1.8.</span> <span class="nav-text">（八）print 输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、变量"><span class="nav-number">2.</span> <span class="nav-text">二、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）变量赋值"><span class="nav-number">2.1.</span> <span class="nav-text">（一）变量赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）数字"><span class="nav-number">2.2.</span> <span class="nav-text">（二）数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）字符串"><span class="nav-number">2.3.</span> <span class="nav-text">（三）字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）列表（List）"><span class="nav-number">2.4.</span> <span class="nav-text">（四）列表（List）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）元组（tuple）"><span class="nav-number">2.5.</span> <span class="nav-text">（五）元组（tuple）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）字典-dictionary"><span class="nav-number">2.6.</span> <span class="nav-text">（六）字典(dictionary)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（七）类型转换"><span class="nav-number">2.7.</span> <span class="nav-text">（七）类型转换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、运算符"><span class="nav-number">3.</span> <span class="nav-text">三、运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）算术运算"><span class="nav-number">3.1.</span> <span class="nav-text">（一）算术运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）比较运算"><span class="nav-number">3.2.</span> <span class="nav-text">（二）比较运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）赋值运算"><span class="nav-number">3.3.</span> <span class="nav-text">（三）赋值运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）位运算"><span class="nav-number">3.4.</span> <span class="nav-text">（四）位运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）逻辑运算"><span class="nav-number">3.5.</span> <span class="nav-text">（五）逻辑运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）成员运算"><span class="nav-number">3.6.</span> <span class="nav-text">（六）成员运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（七）身份运算"><span class="nav-number">3.7.</span> <span class="nav-text">（七）身份运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（八）运算符优先级"><span class="nav-number">3.8.</span> <span class="nav-text">（八）运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、流程控制语句"><span class="nav-number">4.</span> <span class="nav-text">四、流程控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）条件语句"><span class="nav-number">4.1.</span> <span class="nav-text">（一）条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）while循环"><span class="nav-number">4.2.</span> <span class="nav-text">（二）while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）for循环"><span class="nav-number">4.3.</span> <span class="nav-text">（三）for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）break语句"><span class="nav-number">4.4.</span> <span class="nav-text">（四）break语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）continue语句"><span class="nav-number">4.5.</span> <span class="nav-text">（五）continue语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）pass语句"><span class="nav-number">4.6.</span> <span class="nav-text">（六）pass语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rainba Perspective</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+
+</body>
+</html>
